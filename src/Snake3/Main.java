@@ -69,16 +69,17 @@ public class Main {
             if(!game) break;
             end_time = System.currentTimeMillis();
             summ_time += end_time - start_time;
-            int delay = 100 - snake.score;
-            if(delay <= 0) delay = 20;
-            delay = 100;
+            int delay = 20 - snake.score;
+            if(delay <= 5) delay = 5;
             if(summ_time >= delay){
                 tk.sync();
 
-                if(!snake.move()){
-                    System.out.println(snake.score);
-                    game = false;
-                    continue;
+                if(snake.moveSmothly()) {
+                    if (!snake.move()) {
+                        System.out.println(snake.score);
+                        game = false;
+                        continue;
+                    }
                 }
                 if(snake.Head.position.x > scene.MaxX-size || snake.Head.position.y > scene.MaxY-size || snake.Head.position.x < scene.MinX+size || snake.Head.position.y < scene.MinY+size){
                     System.out.println(snake.score);

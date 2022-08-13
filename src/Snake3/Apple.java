@@ -22,7 +22,7 @@ class Apple extends ShapesObject {
         this.position = new Vector2(dir);
         Size = size;
         Eated = false;
-        score = 20;
+        score = 1;
     }
 
     public void Spawn(int x, int y){
